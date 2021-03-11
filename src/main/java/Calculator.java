@@ -66,10 +66,14 @@ public class Calculator {
         }
     }
     public static double getSquareRoot(double num){
+        if(num < 0)
+            return Double.NaN;
         return Math.sqrt(num);
     }
     public static double getFactorial(int n)
     {
+        if(n < 0)
+            return Double.NaN;
         if (n == 0)
             return 1;
         return n*getFactorial(n-1);
