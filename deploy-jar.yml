@@ -5,7 +5,7 @@
     - name: Pull dheerajkarnam/calculator-spe-devops
       docker_image:
         name: dheerajkarnam/calculator-spe-devops
-        source: pull
+        # source: pull
 
 #    - name: Copy jar file to home directory
 #      copy:
