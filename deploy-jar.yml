@@ -6,6 +6,7 @@
       docker_image:
         name: dheerajkarnam/calculator-spe-devops
         source: pull
+
 #    - name: Copy jar file to home directory
 #      copy:
 #        src: ./target/Lab3Junit-1.0-SNAPSHOT.jar
