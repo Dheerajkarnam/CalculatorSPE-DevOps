@@ -1,8 +1,12 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Calculator {
+
+    private static final Logger logger = LogManager.getLogger(Calculator.class);
     public static void main(String[] args) throws IOException {
         System.out.println("Calculator SPE mini project");
         while(true) {
@@ -66,25 +70,48 @@ public class Calculator {
         }
     }
     public static double getSquareRoot(double num){
+        logger.info("[SQ ROOT] - " + num);
         if(num < 0)
             return Double.NaN;
-        return Math.sqrt(num);
+
+        double result = Math.sqrt(num);
+        logger.info("[RESULT - SQ ROOT] - " + result);
+        return result;
     }
-    public static double getFactorial(int n)
+    public static double getFactorial(int number1)
     {
-        if(n < 0)
-            return Double.NaN;
-        if (n == 0)
-            return 1;
-        return n*getFactorial(n-1);
+        logger.info("[FACTORIAL] - " + number1);
+        double result=1;
+        for(int i=1;i<=number1;i++)
+            result*=i;
+        logger.info("[RESULT - FACTORIAL] - " + result);
+        return result;
     }
-    public static double getLogarithm(double num){
-        return Math.log(num);
+    public static double getLogarithm(double number1){
+        logger.info("[NATURAL LOG] - " + number1);
+        double result = 0;
+        try {
+
+            if (number1 <0 ) {
+                result = Double.NaN;
+                throw new ArithmeticException("Case of NaN 0.0/0.0");
+            }
+            else {
+                result = Math.log(number1);
+            }
+        } catch (ArithmeticException error) {
+            System.out.println("[EXCEPTION - LOG] - Cannot find log of negative numbers " + error.getLocalizedMessage());
+        }
+        logger.info("[RESULT - NATURAL LOG] - " + result);
+        return result;
     }
-    public static double cal_pow(double base_num, double exp_num){
-        if(base_num==0 && exp_num==0)
+    public static double cal_pow(double number1, double number2){
+        if(number1==0 && number2==0)
             return Double.NaN;
-        return Math.pow(base_num, exp_num);
+        logger.info("[POWER - " + number1 + " RAISED TO] " + number2);
+        double result = Math.pow(number1,number2);
+        logger.info("[RESULT - POWER] - " + result);
+        return result;
     }
 
 }
